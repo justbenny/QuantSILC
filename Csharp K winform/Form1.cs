@@ -69,7 +69,7 @@ namespace Csharp_K_winform
             dateEndDtp.MinDate = Convert.ToDateTime("2015-01-05", dtFormat);
             dateEndDtp.MaxDate = Convert.ToDateTime("2016-04-01", dtFormat);
             dateEndDtp.MinDate = dateStartDtp.Value;
-            dateEndDtp.MaxDate = dateStartDtp.Value.AddDays(50); 
+            dateEndDtp.MaxDate = dateStartDtp.Value.AddDays(300); 
         }
 
         private void fileSearchBtn_Click(object sender, EventArgs e)
@@ -136,8 +136,6 @@ namespace Csharp_K_winform
                 }
                 dataInput = true;
 
-                Avg(5);//
-
             }
             catch (IOException err)
             {
@@ -179,7 +177,7 @@ namespace Csharp_K_winform
         }
 
         private void drawKLine()
-        {
+        {            
             int indexStart = 0, indexEnd = 0;
       
             for (int i = 0; i < 304; i++)
@@ -199,42 +197,22 @@ namespace Csharp_K_winform
                 }
             }
             int rectangleWidth = (KlineGpb.Width - 40) / (indexEnd - indexStart + 1);
+            int roundDifference = (KlineGpb.Width - 40) - ((indexEnd - indexStart + 1) * rectangleWidth);
 
             double globalMax = 0, globalMin = Double.MaxValue;
+            Avg(5);
             for (int i = indexStart; i < indexEnd + 1; i++)
             {
-                if (avgPrice[i]<dataIn[i].max)//
-                {
-                    if (globalMax < dataIn[i].max)
-                    {
-                        globalMax = dataIn[i].max;
-                    }
-                }
-                else
-                {
-                    if (globalMax < avgPrice[i])
-                    {
-                        globalMax = avgPrice[i];
-                    }
-                }
-
-                if (avgPrice[i] > dataIn[i].min)//
-                {
-                    if (globalMin > dataIn[i].min)
-                    {
-                        globalMin = dataIn[i].min;
-                    }
-                }
-                else
-                {
-                    if (globalMin > avgPrice[i])
-                    {
-                        globalMin = avgPrice[i];
-                    }
-                }
+                if (globalMax < avgPrice[i])
+                    globalMax = avgPrice[i];
+                if (globalMax < dataIn[i].max)
+                    globalMax = dataIn[i].max;
+                if (globalMin > avgPrice[i])
+                    globalMin = avgPrice[i];
+                if (globalMin > dataIn[i].min)
+                    globalMin = dataIn[i].min;
             }
             double pricePerPixar = (globalMax - globalMin) / (KlineGpb.Height - 40);
-
             
             kLine = KlineGpb.CreateGraphics();
             KlineGpb.Refresh();
@@ -242,31 +220,34 @@ namespace Csharp_K_winform
             Pen positive = new Pen(Color.Red, 1);
             Pen negative = new Pen(Color.Green, 1);
 
+            int diffTemp = 0;
             for (int i = indexStart; i < indexEnd + 1; i++)
             {
+                if (roundDifference > 0)
+                {
+                    diffTemp++;
+                    roundDifference--;
+                }
                 int rectangleHeight = (int)Math.Ceiling(Math.Abs(((dataIn[i].start-dataIn[i].end)/pricePerPixar)));
-                int rectangleX = 20 + (i - indexStart) * rectangleWidth;
+                int rectangleX = 20 + (i - indexStart) * rectangleWidth + diffTemp;
+               
                 int rectangleY = 0;
-                int maxY = (int)Math.Ceiling((dataIn[i].max - globalMin) / pricePerPixar) + 20;
-                maxY = KlineGpb.Height - maxY;
-                int minY = (int)Math.Ceiling((dataIn[i].min - globalMin) / pricePerPixar) + 20;
-                minY = KlineGpb.Height - minY;
+
 
                 Line max = new Line(), min = new Line();  
-                max.start.X = (int)Math.Ceiling((0.5 + i - indexStart) * rectangleWidth) + 20;
-                max.start.Y = KlineGpb.Height - ((int)Math.Ceiling((dataIn[i].max - globalMin) / pricePerPixar) + 20);
-                max.end.X = (int)Math.Ceiling((0.5 + i - indexStart) * rectangleWidth) + 20;
+                max.start.X = (int)Math.Ceiling((0.5 + i - indexStart) * rectangleWidth) + 20 +diffTemp;
+                max.start.Y = KlineGpb.Height - (int)Math.Ceiling((dataIn[i].max - globalMin) / pricePerPixar) - 20;
+                max.end.X = (int)Math.Ceiling((0.5 + i - indexStart) * rectangleWidth) + 20 + diffTemp;
 
-                min.start.X = (int)Math.Ceiling((0.5 + i - indexStart) * rectangleWidth) + 20;
-                min.end.X = (int)Math.Ceiling((0.5 + i - indexStart) * rectangleWidth) + 20;
-
+                min.start.X = (int)Math.Ceiling((0.5 + i - indexStart) * rectangleWidth) + 20 + diffTemp;
+                min.end.X = (int)Math.Ceiling((0.5 + i - indexStart) * rectangleWidth) + 20 + diffTemp;               
 
                 if (dataIn[i].start >= dataIn[i].end)
                 {
-                    rectangleY = (int)Math.Round((dataIn[i].start-globalMin) / pricePerPixar) +  20;
-                    rectangleY = KlineGpb.Height  - rectangleY + rectangleHeight;
+                    rectangleY = (int)Math.Round((dataIn[i].start-globalMin) / pricePerPixar);
+                    rectangleY = KlineGpb.Height  - rectangleY - 20;
                     kLine.DrawRectangle(negative, rectangleX + 1, rectangleY, rectangleWidth - 2, rectangleHeight);
-
+                     
                     SolidBrush green = new SolidBrush(Color.Green);
                     kLine.FillRectangle(green, rectangleX + 1, rectangleY, rectangleWidth - 2, rectangleHeight);
 
@@ -274,22 +255,22 @@ namespace Csharp_K_winform
                     kLine.DrawLine(negative,max.start,max.end);
 
                     min.start.Y = rectangleY+rectangleHeight;
-                    int length = (int)Math.Round((Math.Min(dataIn[i].start, dataIn[i].end) - dataIn[i].min) / pricePerPixar);
+                    int length = (int)Math.Round((dataIn[i].end - dataIn[i].min) / pricePerPixar);
                     min.end.Y = min.start.Y + length;
                     kLine.DrawLine(negative, min.start, min.end);
 
                 }
                 else
                 {
-                    rectangleY = (int)Math.Round((dataIn[i].end-globalMin) / pricePerPixar) +  20;
-                    rectangleY = KlineGpb.Height  - rectangleY + rectangleHeight;
+                    rectangleY = (int)Math.Round((dataIn[i].end-globalMin) / pricePerPixar);
+                    rectangleY = KlineGpb.Height  - rectangleY - 20;
                     kLine.DrawRectangle(positive, rectangleX + 1, rectangleY, rectangleWidth - 2, rectangleHeight);
 
                     max.end.Y = rectangleY;
                     kLine.DrawLine(positive, max.start, max.end);
 
                     min.start.Y = rectangleY+rectangleHeight;
-                    int length = (int)Math.Round((Math.Min(dataIn[i].start, dataIn[i].end) - dataIn[i].min) / pricePerPixar);
+                    int length = (int)Math.Round((dataIn[i].start - dataIn[i].min) / pricePerPixar);
                     min.end.Y = min.start.Y + length;
                     kLine.DrawLine(positive, min.start, min.end);
 
@@ -321,60 +302,47 @@ namespace Csharp_K_winform
                 }
             }
             int rectangleWidth = (KlineGpb.Width - 40) / (indexEnd - indexStart + 1);
+            int roundDiff = KlineGpb.Width - 40 - (rectangleWidth * (indexEnd - indexStart + 1));
 
             double globalMax = 0, globalMin = Double.MaxValue;
             for (int i = indexStart; i < indexEnd + 1; i++)
             {
-                if (avgPrice[i] < dataIn[i].max)//
-                {
-                    if (globalMax < dataIn[i].max)
-                    {
-                        globalMax = dataIn[i].max;
-                    }
-                }
-                else
-                {
-                    if (globalMax < avgPrice[i])
-                    {
-                        globalMax = avgPrice[i];
-                    }
-                }
-
-                if (avgPrice[i] > dataIn[i].min)//
-                {
-                    if (globalMin > dataIn[i].min)
-                    {
-                        globalMin = dataIn[i].min;
-                    }
-                }
-                else
-                {
-                    if (globalMin > avgPrice[i])
-                    {
-                        globalMin = avgPrice[i];
-                    }
-                }
+                if (globalMax < avgPrice[i])
+                    globalMax = avgPrice[i];
+                if (globalMax < dataIn[i].max)
+                    globalMax = dataIn[i].max;
+                if (globalMin > avgPrice[i])
+                    globalMin = avgPrice[i];
+                if (globalMin > dataIn[i].min)
+                    globalMin = dataIn[i].min;
             }
             double pricePerPixar = (globalMax - globalMin) / (KlineGpb.Height - 40);
 
-            Pen avg = new Pen(linecolor, 1);//
-
-            for (int i = indexStart; i < indexEnd + 1; i++)
+            Pen avg = new Pen(linecolor, 1);
+            int diff = 0;
+            for (int i = indexStart; i < indexEnd; i++)
             {
-                Line avgP = new Line();//
-
-                avgP.start.X = (int)Math.Ceiling((0.5 + i - indexStart) * rectangleWidth) + 20;//
-                avgP.start.Y = KlineGpb.Height - ((int)Math.Ceiling((avgPrice[i] - globalMin) / pricePerPixar) + 20);//
-                avgP.end.X = (int)Math.Ceiling((1.5 + i - indexStart) * rectangleWidth) + 20;//
-                avgP.end.Y = KlineGpb.Height - ((int)Math.Ceiling((avgPrice[i + 1] - globalMin) / pricePerPixar) + 20);//
-
+                if (avgPrice[i] == 0)
+                    continue;
+                Line avgP = new Line();
+                
+                avgP.start.X = (int)Math.Ceiling((0.5 + i - indexStart) * rectangleWidth) + 20 + diff;
+                avgP.start.Y = KlineGpb.Height - (int)Math.Ceiling((avgPrice[i] - globalMin) / pricePerPixar) - 20;
+                 if (roundDiff > 0)
+                {
+                    diff++;
+                    roundDiff--;
+                }
+                avgP.end.X = (int)Math.Ceiling((1.5 + i - indexStart) * rectangleWidth) + 20 + diff;
+                avgP.end.Y = KlineGpb.Height - (int)Math.Ceiling((avgPrice[i + 1] - globalMin) / pricePerPixar) - 20;
+               
                 if (dataIn[i].start >= dataIn[i].end)
                 {
-                    kLine.DrawLine(avg, avgP.start, avgP.end);//
+                    kLine.DrawLine(avg, avgP.start, avgP.end);
                 }
                 else
                 {
-                    kLine.DrawLine(avg, avgP.start, avgP.end);//
+                    kLine.DrawLine(avg, avgP.start, avgP.end);
                 }
             }
             chartdrawn = true;
@@ -399,13 +367,6 @@ namespace Csharp_K_winform
         }
         private void drawAvg()
         {
-            Color[] linecolors = new Color[6];
-            linecolors[0] = Color.Black;
-            linecolors[1] = Color.Orange;
-            linecolors[2] = Color.Violet;
-            linecolors[3] = Color.Green;
-            linecolors[4] = Color.Blue;
-            linecolors[5] = Color.Purple;
             bool[] linesToDraw = new bool[6];
             linesToDraw[0] = five_Cbx.Checked;
             linesToDraw[1] = ten_Cbx.Checked;
@@ -413,13 +374,28 @@ namespace Csharp_K_winform
             linesToDraw[3] = thrity_Cbx.Checked;
             linesToDraw[4] = default1_Cbx.Checked;
             linesToDraw[5] = default2_Cbx.Checked;
-            int[] daysToDraw = { 5, 10, 20, 30, 0, 0 };
-            if (linesToDraw[4]) daysToDraw[4] = Convert.ToInt32(default1_Tbx.Text);
-            if (linesToDraw[5]) daysToDraw[5] = Convert.ToInt32(default2_Tbx.Text);
             for (int i = 0; i < 6; i++)
             {
-                if (linesToDraw[i]) AvgLine(daysToDraw[i], linecolors[i]);
-            }
+                if (linesToDraw[i])
+                {
+                    Color[] linecolors = new Color[6];
+                    linecolors[0] = Color.Black;
+                    linecolors[1] = Color.Orange;
+                    linecolors[2] = Color.Violet;
+                    linecolors[3] = Color.Green;
+                    linecolors[4] = Color.Blue;
+                    linecolors[5] = Color.Purple;
+
+                    int[] daysToDraw = { 5, 10, 20, 30, 0, 0 };
+                    if (linesToDraw[4]) daysToDraw[4] = Convert.ToInt32(default1_Tbx.Text);
+                    if (linesToDraw[5]) daysToDraw[5] = Convert.ToInt32(default2_Tbx.Text);
+                    for (int j = 0; j < 6; j++)
+                    {
+                        if (linesToDraw[j]) AvgLine(daysToDraw[j], linecolors[j]);
+                    }
+                    return;
+                }                    
+            }            
         }
         private void drawVolume()
         {
@@ -432,7 +408,7 @@ namespace Csharp_K_winform
                     break;
                 }
             }
-            for (int i = indexStart; i < 211; i++)
+            for (int i = indexStart; i < 304; i++)
             {
                 if (dataIn[i].date.CompareTo(dateEndDtp.Value) >= 0)
                 {
@@ -442,6 +418,7 @@ namespace Csharp_K_winform
             }
 
             int rectangle_width = (amountGpb.Width - 40) / (indexEnd - indexStart + 1);
+            int roundDifference = amountGpb.Width - 40 - (rectangle_width * (indexEnd - indexStart + 1));
 
             long rectangle_min = 0, rectangle_max = 0;
             long temp;
@@ -465,15 +442,27 @@ namespace Csharp_K_winform
             Pen increase = new Pen(Color.Red, 1);
             Pen decrease = new Pen(Color.Green, 1);
 
+            int diff = 0;
             for (int i = indexStart; i <= indexEnd; i++)
             {
-                int rectangleHeight = (int)Math.Ceiling(Math.Abs((dataIn[i].vol / volPerPixar)));   //算出高度
-                int rectangleX = 20 + (i - indexStart) * rectangle_width;
+                int rectangleHeight = (int)Math.Ceiling(dataIn[i].vol / volPerPixar);   //算出高度
+                if (roundDifference > 0)
+                {
+                    diff++;
+                    roundDifference--;
+                }
+                int rectangleX = 20 + (i - indexStart) * rectangle_width + diff ;
                 int rectangleY = amountGpb.Height - rectangleHeight;
 
-                if (dataIn[i].end >= dataIn[i - 1].end)
-
+                if (i == 0)
+                {
                     amountLine.DrawRectangle(increase, rectangleX + 1, rectangleY, rectangle_width - 2, rectangleHeight);
+                    continue;
+                }
+                if (dataIn[i].end >= dataIn[i - 1].end)
+                {
+                    amountLine.DrawRectangle(increase, rectangleX + 1, rectangleY, rectangle_width - 2, rectangleHeight);
+                }
                 else
                 {
                     amountLine.DrawRectangle(decrease, rectangleX + 1, rectangleY, rectangle_width - 2, rectangleHeight);

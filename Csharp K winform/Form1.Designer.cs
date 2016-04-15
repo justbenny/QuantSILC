@@ -80,24 +80,24 @@
             // 
             this.dateStartDtp.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dateStartDtp.Location = new System.Drawing.Point(631, 12);
-            this.dateStartDtp.MaxDate = new System.DateTime(2016, 1, 15, 0, 0, 0, 0);
-            this.dateStartDtp.MinDate = new System.DateTime(2015, 3, 11, 0, 0, 0, 0);
+            this.dateStartDtp.MaxDate = new System.DateTime(2016, 4, 1, 0, 0, 0, 0);
+            this.dateStartDtp.MinDate = new System.DateTime(2015, 1, 5, 0, 0, 0, 0);
             this.dateStartDtp.Name = "dateStartDtp";
             this.dateStartDtp.Size = new System.Drawing.Size(200, 26);
             this.dateStartDtp.TabIndex = 2;
-            this.dateStartDtp.Value = new System.DateTime(2015, 3, 11, 0, 0, 0, 0);
+            this.dateStartDtp.Value = new System.DateTime(2015, 1, 5, 0, 0, 0, 0);
             this.dateStartDtp.ValueChanged += new System.EventHandler(this.dateStartDtp_ValueChanged);
             // 
             // dateEndDtp
             // 
             this.dateEndDtp.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dateEndDtp.Location = new System.Drawing.Point(631, 44);
-            this.dateEndDtp.MaxDate = new System.DateTime(2016, 1, 15, 0, 0, 0, 0);
-            this.dateEndDtp.MinDate = new System.DateTime(2015, 3, 11, 0, 0, 0, 0);
+            this.dateEndDtp.MaxDate = new System.DateTime(2016, 4, 1, 0, 0, 0, 0);
+            this.dateEndDtp.MinDate = new System.DateTime(2015, 1, 5, 0, 0, 0, 0);
             this.dateEndDtp.Name = "dateEndDtp";
             this.dateEndDtp.Size = new System.Drawing.Size(200, 26);
             this.dateEndDtp.TabIndex = 3;
-            this.dateEndDtp.Value = new System.DateTime(2015, 3, 11, 0, 0, 0, 0);
+            this.dateEndDtp.Value = new System.DateTime(2015, 10, 30, 0, 0, 0, 0);
             this.dateEndDtp.ValueChanged += new System.EventHandler(this.dateEndDtp_ValueChanged);
             // 
             // KlineGpb

@@ -66,10 +66,10 @@ namespace Csharp_K_winform
             
             DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
             dtFormat.ShortDatePattern = "yyyy-MM-dd";
-            dateEndDtp.MinDate = Convert.ToDateTime("2015-01-05", dtFormat);
-            dateEndDtp.MaxDate = Convert.ToDateTime("2016-04-01", dtFormat);
             dateEndDtp.MinDate = dateStartDtp.Value;
             dateEndDtp.MaxDate = dateStartDtp.Value.AddDays(300); 
+            if (dateEndDtp.MaxDate.CompareTo(Convert.ToDateTime("2016-04-01", dtFormat))>0)
+                dateEndDtp.MaxDate = Convert.ToDateTime("2016-04-01", dtFormat);
         }
 
         private void fileSearchBtn_Click(object sender, EventArgs e)

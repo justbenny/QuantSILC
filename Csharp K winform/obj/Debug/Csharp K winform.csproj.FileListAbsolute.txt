@@ -70,3 +70,12 @@ D:\visual studio 2013\Projects\Csharp K winform - 均线-成交量\Csharp K winf
 D:\visual studio 2013\Projects\Csharp K winform - 均线-成交量\Csharp K winform\obj\Debug\Csharp_K_winform.Form1.resources
 D:\visual studio 2013\Projects\Csharp K winform - 均线-成交量\Csharp K winform\obj\Debug\Csharp_K_winform.Properties.Resources.resources
 D:\visual studio 2013\Projects\Csharp K winform - 均线-成交量\Csharp K winform\obj\Debug\Csharp K winform.csproj.GenerateResource.Cache
+D:\GitHub\QuantSILC\Csharp K winform\bin\Debug\Csharp K winform.exe.config
+D:\GitHub\QuantSILC\Csharp K winform\obj\Debug\Csharp K winform.exe
+D:\GitHub\QuantSILC\Csharp K winform\obj\Debug\Csharp K winform.pdb
+D:\GitHub\QuantSILC\Csharp K winform\bin\Debug\Csharp K winform.exe
+D:\GitHub\QuantSILC\Csharp K winform\bin\Debug\Csharp K winform.pdb
+D:\GitHub\QuantSILC\Csharp K winform\obj\Debug\Csharp K winform.csprojResolveAssemblyReference.cache
+D:\GitHub\QuantSILC\Csharp K winform\obj\Debug\Csharp_K_winform.Form1.resources
+D:\GitHub\QuantSILC\Csharp K winform\obj\Debug\Csharp_K_winform.Properties.Resources.resources
+D:\GitHub\QuantSILC\Csharp K winform\obj\Debug\Csharp K winform.csproj.GenerateResource.Cache

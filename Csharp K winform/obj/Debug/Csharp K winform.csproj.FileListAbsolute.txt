@@ -1,0 +1,72 @@
+D:\visual studio 2013\Projects\Csharp K winform\bin\Debug\Csharp K winform.exe.config
+D:\visual studio 2013\Projects\Csharp K winform\bin\Debug\Csharp K winform.exe
+D:\visual studio 2013\Projects\Csharp K winform\bin\Debug\Csharp K winform.pdb
+D:\visual studio 2013\Projects\Csharp K winform\obj\Debug\Csharp K winform.csprojResolveAssemblyReference.cache
+D:\visual studio 2013\Projects\Csharp K winform\obj\Debug\Csharp_K_winform.Form1.resources
+D:\visual studio 2013\Projects\Csharp K winform\obj\Debug\Csharp_K_winform.Properties.Resources.resources
+D:\visual studio 2013\Projects\Csharp K winform\obj\Debug\Csharp K winform.csproj.GenerateResource.Cache
+D:\visual studio 2013\Projects\Csharp K winform\obj\Debug\Csharp K winform.exe
+D:\visual studio 2013\Projects\Csharp K winform\obj\Debug\Csharp K winform.pdb
+E:\量化投资\Csharp K winform\Csharp K winform\bin\Debug\Csharp K winform.exe.config
+E:\量化投资\Csharp K winform\Csharp K winform\obj\Debug\Csharp K winform.exe
+E:\量化投资\Csharp K winform\Csharp K winform\obj\Debug\Csharp K winform.pdb
+E:\量化投资\Csharp K winform\Csharp K winform\bin\Debug\Csharp K winform.exe
+E:\量化投资\Csharp K winform\Csharp K winform\bin\Debug\Csharp K winform.pdb
+E:\量化投资\Csharp K winform\Csharp K winform\obj\Debug\Csharp K winform.csprojResolveAssemblyReference.cache
+E:\量化投资\Csharp K winform\Csharp K winform\obj\Debug\Csharp_K_winform.Form1.resources
+E:\量化投资\Csharp K winform\Csharp K winform\obj\Debug\Csharp_K_winform.Properties.Resources.resources
+E:\量化投资\Csharp K winform\Csharp K winform\obj\Debug\Csharp K winform.csproj.GenerateResource.Cache
+E:\量化投资\Csharp K winform - gai\Csharp K winform\bin\Debug\Csharp K winform.exe.config
+E:\量化投资\Csharp K winform - gai\Csharp K winform\obj\Debug\Csharp K winform.exe
+E:\量化投资\Csharp K winform - gai\Csharp K winform\obj\Debug\Csharp K winform.pdb
+E:\量化投资\Csharp K winform - gai\Csharp K winform\bin\Debug\Csharp K winform.exe
+E:\量化投资\Csharp K winform - gai\Csharp K winform\bin\Debug\Csharp K winform.pdb
+E:\量化投资\Csharp K winform - gai\Csharp K winform\obj\Debug\Csharp K winform.csprojResolveAssemblyReference.cache
+E:\量化投资\Csharp K winform - gai\Csharp K winform\obj\Debug\Csharp_K_winform.Form1.resources
+E:\量化投资\Csharp K winform - gai\Csharp K winform\obj\Debug\Csharp_K_winform.Properties.Resources.resources
+E:\量化投资\Csharp K winform - gai\Csharp K winform\obj\Debug\Csharp K winform.csproj.GenerateResource.Cache
+E:\量化投资\Csharp K winform - 均线部分\Csharp K winform\bin\Debug\Csharp K winform.exe.config
+E:\量化投资\Csharp K winform - 均线部分\Csharp K winform\obj\Debug\Csharp K winform.exe
+E:\量化投资\Csharp K winform - 均线部分\Csharp K winform\obj\Debug\Csharp K winform.pdb
+E:\量化投资\Csharp K winform - 均线部分\Csharp K winform\bin\Debug\Csharp K winform.exe
+E:\量化投资\Csharp K winform - 均线部分\Csharp K winform\bin\Debug\Csharp K winform.pdb
+E:\量化投资\Csharp K winform - 均线部分\Csharp K winform\obj\Debug\Csharp K winform.csprojResolveAssemblyReference.cache
+E:\量化投资\Csharp K winform - 均线部分\Csharp K winform\obj\Debug\Csharp_K_winform.Form1.resources
+E:\量化投资\Csharp K winform - 均线部分\Csharp K winform\obj\Debug\Csharp_K_winform.Properties.Resources.resources
+E:\量化投资\Csharp K winform - 均线部分\Csharp K winform\obj\Debug\Csharp K winform.csproj.GenerateResource.Cache
+D:\下载\Csharp K winform - 均线部分\Csharp K winform\bin\Debug\Csharp K winform.exe.config
+D:\下载\Csharp K winform - 均线部分\Csharp K winform\obj\Debug\Csharp K winform.exe
+D:\下载\Csharp K winform - 均线部分\Csharp K winform\obj\Debug\Csharp K winform.pdb
+D:\下载\Csharp K winform - 均线部分\Csharp K winform\bin\Debug\Csharp K winform.exe
+D:\下载\Csharp K winform - 均线部分\Csharp K winform\bin\Debug\Csharp K winform.pdb
+D:\下载\Csharp K winform - 均线部分\Csharp K winform\obj\Debug\Csharp K winform.csprojResolveAssemblyReference.cache
+D:\下载\Csharp K winform - 均线部分\Csharp K winform\obj\Debug\Csharp_K_winform.Form1.resources
+D:\下载\Csharp K winform - 均线部分\Csharp K winform\obj\Debug\Csharp_K_winform.Properties.Resources.resources
+D:\下载\Csharp K winform - 均线部分\Csharp K winform\obj\Debug\Csharp K winform.csproj.GenerateResource.Cache
+D:\下载\Csharp K winform - 均线部分-改\Csharp K winform\bin\Debug\Csharp K winform.exe.config
+D:\下载\Csharp K winform - 均线部分-改\Csharp K winform\obj\Debug\Csharp K winform.exe
+D:\下载\Csharp K winform - 均线部分-改\Csharp K winform\obj\Debug\Csharp K winform.pdb
+D:\下载\Csharp K winform - 均线部分-改\Csharp K winform\bin\Debug\Csharp K winform.exe
+D:\下载\Csharp K winform - 均线部分-改\Csharp K winform\bin\Debug\Csharp K winform.pdb
+D:\下载\Csharp K winform - 均线部分-改\Csharp K winform\obj\Debug\Csharp K winform.csprojResolveAssemblyReference.cache
+D:\下载\Csharp K winform - 均线部分-改\Csharp K winform\obj\Debug\Csharp_K_winform.Form1.resources
+D:\下载\Csharp K winform - 均线部分-改\Csharp K winform\obj\Debug\Csharp_K_winform.Properties.Resources.resources
+D:\下载\Csharp K winform - 均线部分-改\Csharp K winform\obj\Debug\Csharp K winform.csproj.GenerateResource.Cache
+D:\visual studio 2013\Projects\Csharp K winform - 均线部分-改2\Csharp K winform\bin\Debug\Csharp K winform.exe.config
+D:\visual studio 2013\Projects\Csharp K winform - 均线部分-改2\Csharp K winform\obj\Debug\Csharp K winform.exe
+D:\visual studio 2013\Projects\Csharp K winform - 均线部分-改2\Csharp K winform\obj\Debug\Csharp K winform.pdb
+D:\visual studio 2013\Projects\Csharp K winform - 均线部分-改2\Csharp K winform\bin\Debug\Csharp K winform.exe
+D:\visual studio 2013\Projects\Csharp K winform - 均线部分-改2\Csharp K winform\bin\Debug\Csharp K winform.pdb
+D:\visual studio 2013\Projects\Csharp K winform - 均线部分-改2\Csharp K winform\obj\Debug\Csharp K winform.csprojResolveAssemblyReference.cache
+D:\visual studio 2013\Projects\Csharp K winform - 均线部分-改2\Csharp K winform\obj\Debug\Csharp_K_winform.Form1.resources
+D:\visual studio 2013\Projects\Csharp K winform - 均线部分-改2\Csharp K winform\obj\Debug\Csharp_K_winform.Properties.Resources.resources
+D:\visual studio 2013\Projects\Csharp K winform - 均线部分-改2\Csharp K winform\obj\Debug\Csharp K winform.csproj.GenerateResource.Cache
+D:\visual studio 2013\Projects\Csharp K winform - 均线-成交量\Csharp K winform\bin\Debug\Csharp K winform.exe.config
+D:\visual studio 2013\Projects\Csharp K winform - 均线-成交量\Csharp K winform\obj\Debug\Csharp K winform.exe
+D:\visual studio 2013\Projects\Csharp K winform - 均线-成交量\Csharp K winform\obj\Debug\Csharp K winform.pdb
+D:\visual studio 2013\Projects\Csharp K winform - 均线-成交量\Csharp K winform\bin\Debug\Csharp K winform.exe
+D:\visual studio 2013\Projects\Csharp K winform - 均线-成交量\Csharp K winform\bin\Debug\Csharp K winform.pdb
+D:\visual studio 2013\Projects\Csharp K winform - 均线-成交量\Csharp K winform\obj\Debug\Csharp K winform.csprojResolveAssemblyReference.cache
+D:\visual studio 2013\Projects\Csharp K winform - 均线-成交量\Csharp K winform\obj\Debug\Csharp_K_winform.Form1.resources
+D:\visual studio 2013\Projects\Csharp K winform - 均线-成交量\Csharp K winform\obj\Debug\Csharp_K_winform.Properties.Resources.resources
+D:\visual studio 2013\Projects\Csharp K winform - 均线-成交量\Csharp K winform\obj\Debug\Csharp K winform.csproj.GenerateResource.Cache

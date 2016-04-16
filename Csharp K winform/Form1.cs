@@ -367,29 +367,42 @@ namespace Csharp_K_winform
         }
         private void drawAvg()
         {
-            bool[] linesToDraw = new bool[6];
-            linesToDraw[0] = five_Cbx.Checked;
-            linesToDraw[1] = ten_Cbx.Checked;
-            linesToDraw[2] = twenty_Cbx.Checked;
-            linesToDraw[3] = thrity_Cbx.Checked;
-            linesToDraw[4] = default1_Cbx.Checked;
-            linesToDraw[5] = default2_Cbx.Checked;
+            bool[] linesToDraw = new bool[9];
+            linesToDraw[0] = default0_Cbx.Checked;
+            linesToDraw[1] = default1_Cbx.Checked;
+            linesToDraw[2] = default2_Cbx.Checked;
+            linesToDraw[3] = default3_Cbx.Checked;
+            linesToDraw[4] = default4_Cbx.Checked;
+            linesToDraw[5] = default5_Cbx.Checked;
+            linesToDraw[6] = default6_Cbx.Checked;
+            linesToDraw[7] = default7_Cbx.Checked;
+            linesToDraw[8] = default8_Cbx.Checked;
             for (int i = 0; i < 6; i++)
             {
                 if (linesToDraw[i])
                 {
-                    Color[] linecolors = new Color[6];
+                    Color[] linecolors = new Color[9];
                     linecolors[0] = Color.Black;
                     linecolors[1] = Color.Orange;
                     linecolors[2] = Color.Violet;
                     linecolors[3] = Color.Green;
                     linecolors[4] = Color.Blue;
                     linecolors[5] = Color.Purple;
+                    linecolors[6] = Color.Brown;
+                    linecolors[7] = Color.BurlyWood;
+                    linecolors[8] = Color.Cyan;
 
-                    int[] daysToDraw = { 5, 10, 20, 30, 0, 0 };
-                    if (linesToDraw[4]) daysToDraw[4] = Convert.ToInt32(default1_Tbx.Text);
-                    if (linesToDraw[5]) daysToDraw[5] = Convert.ToInt32(default2_Tbx.Text);
-                    for (int j = 0; j < 6; j++)
+                    int[] daysToDraw = new int[9];
+                    if (linesToDraw[0]) daysToDraw[0] = Convert.ToInt32(default0_Tbx.Text);
+                    if (linesToDraw[1]) daysToDraw[1] = Convert.ToInt32(default1_Tbx.Text);
+                    if (linesToDraw[2]) daysToDraw[2] = Convert.ToInt32(default2_Tbx.Text);
+                    if (linesToDraw[3]) daysToDraw[3] = Convert.ToInt32(default3_Tbx.Text);
+                    if (linesToDraw[4]) daysToDraw[4] = Convert.ToInt32(default4_Tbx.Text);
+                    if (linesToDraw[5]) daysToDraw[5] = Convert.ToInt32(default5_Tbx.Text);
+                    if (linesToDraw[6]) daysToDraw[6] = Convert.ToInt32(default6_Tbx.Text);
+                    if (linesToDraw[7]) daysToDraw[7] = Convert.ToInt32(default7_Tbx.Text);
+                    if (linesToDraw[8]) daysToDraw[8] = Convert.ToInt32(default8_Tbx.Text);
+                    for (int j = 0; j < 9; j++)
                     {
                         if (linesToDraw[j]) AvgLine(daysToDraw[j], linecolors[j]);
                     }
@@ -470,6 +483,11 @@ namespace Csharp_K_winform
                     amountLine.FillRectangle(green, rectangleX + 1, rectangleY, rectangle_width - 2, rectangleHeight);
                 }
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
 
     }

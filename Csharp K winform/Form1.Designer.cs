@@ -199,29 +199,38 @@
             // default6_Cbx
             // 
             this.default6_Cbx.AutoSize = true;
+            this.default6_Cbx.Checked = true;
+            this.default6_Cbx.CheckState = System.Windows.Forms.CheckState.Checked;
             this.default6_Cbx.Location = new System.Drawing.Point(1148, 15);
             this.default6_Cbx.Name = "default6_Cbx";
             this.default6_Cbx.Size = new System.Drawing.Size(15, 14);
             this.default6_Cbx.TabIndex = 11;
             this.default6_Cbx.UseVisualStyleBackColor = true;
+            this.default6_Cbx.CheckedChanged += new System.EventHandler(this.default6_Cbx_CheckedChanged);
             // 
             // default7_Cbx
             // 
             this.default7_Cbx.AutoSize = true;
+            this.default7_Cbx.Checked = true;
+            this.default7_Cbx.CheckState = System.Windows.Forms.CheckState.Checked;
             this.default7_Cbx.Location = new System.Drawing.Point(1148, 39);
             this.default7_Cbx.Name = "default7_Cbx";
             this.default7_Cbx.Size = new System.Drawing.Size(15, 14);
             this.default7_Cbx.TabIndex = 12;
             this.default7_Cbx.UseVisualStyleBackColor = true;
+            this.default7_Cbx.CheckedChanged += new System.EventHandler(this.default7_Cbx_CheckedChanged);
             // 
             // default8_Cbx
             // 
             this.default8_Cbx.AutoSize = true;
+            this.default8_Cbx.Checked = true;
+            this.default8_Cbx.CheckState = System.Windows.Forms.CheckState.Checked;
             this.default8_Cbx.Location = new System.Drawing.Point(1148, 63);
             this.default8_Cbx.Name = "default8_Cbx";
             this.default8_Cbx.Size = new System.Drawing.Size(15, 14);
             this.default8_Cbx.TabIndex = 13;
             this.default8_Cbx.UseVisualStyleBackColor = true;
+            this.default8_Cbx.CheckedChanged += new System.EventHandler(this.default8_Cbx_CheckedChanged);
             // 
             // default0_Cbx
             // 
@@ -233,6 +242,7 @@
             this.default0_Cbx.Size = new System.Drawing.Size(15, 14);
             this.default0_Cbx.TabIndex = 14;
             this.default0_Cbx.UseVisualStyleBackColor = true;
+            this.default0_Cbx.CheckedChanged += new System.EventHandler(this.default0_Cbx_CheckedChanged);
             // 
             // default1_Cbx
             // 
@@ -244,6 +254,7 @@
             this.default1_Cbx.Size = new System.Drawing.Size(15, 14);
             this.default1_Cbx.TabIndex = 15;
             this.default1_Cbx.UseVisualStyleBackColor = true;
+            this.default1_Cbx.CheckedChanged += new System.EventHandler(this.default1_Cbx_CheckedChanged);
             // 
             // default2_Cbx
             // 
@@ -255,6 +266,7 @@
             this.default2_Cbx.Size = new System.Drawing.Size(15, 14);
             this.default2_Cbx.TabIndex = 16;
             this.default2_Cbx.UseVisualStyleBackColor = true;
+            this.default2_Cbx.CheckedChanged += new System.EventHandler(this.default2_Cbx_CheckedChanged);
             // 
             // default1_Tbx
             // 
@@ -264,6 +276,7 @@
             this.default1_Tbx.Size = new System.Drawing.Size(40, 18);
             this.default1_Tbx.TabIndex = 17;
             this.default1_Tbx.Text = "10";
+            this.default1_Tbx.TextChanged += new System.EventHandler(this.default1_Tbx_TextChanged);
             // 
             // default2_Tbx
             // 
@@ -273,6 +286,7 @@
             this.default2_Tbx.Size = new System.Drawing.Size(40, 18);
             this.default2_Tbx.TabIndex = 18;
             this.default2_Tbx.Text = "20";
+            this.default2_Tbx.TextChanged += new System.EventHandler(this.default2_Tbx_TextChanged);
             // 
             // default1_Lbl
             // 
@@ -333,6 +347,7 @@
             this.default0_Tbx.Size = new System.Drawing.Size(40, 18);
             this.default0_Tbx.TabIndex = 22;
             this.default0_Tbx.Text = "5";
+            this.default0_Tbx.TextChanged += new System.EventHandler(this.default0_Tbx_TextChanged);
             // 
             // default7_Tbx
             // 
@@ -341,6 +356,8 @@
             this.default7_Tbx.Name = "default7_Tbx";
             this.default7_Tbx.Size = new System.Drawing.Size(40, 18);
             this.default7_Tbx.TabIndex = 23;
+            this.default7_Tbx.Text = "180";
+            this.default7_Tbx.TextChanged += new System.EventHandler(this.default7_Tbx_TextChanged);
             // 
             // default8_Tbx
             // 
@@ -349,6 +366,8 @@
             this.default8_Tbx.Name = "default8_Tbx";
             this.default8_Tbx.Size = new System.Drawing.Size(40, 18);
             this.default8_Tbx.TabIndex = 24;
+            this.default8_Tbx.Text = "300";
+            this.default8_Tbx.TextChanged += new System.EventHandler(this.default8_Tbx_TextChanged);
             // 
             // label1
             // 
@@ -384,6 +403,8 @@
             this.default6_Tbx.Name = "default6_Tbx";
             this.default6_Tbx.Size = new System.Drawing.Size(40, 18);
             this.default6_Tbx.TabIndex = 28;
+            this.default6_Tbx.Text = "90";
+            this.default6_Tbx.TextChanged += new System.EventHandler(this.default6_Tbx_TextChanged);
             // 
             // label4
             // 
@@ -411,6 +432,7 @@
             this.default3_Tbx.Size = new System.Drawing.Size(40, 18);
             this.default3_Tbx.TabIndex = 37;
             this.default3_Tbx.Text = "30";
+            this.default3_Tbx.TextChanged += new System.EventHandler(this.default3_Tbx_TextChanged);
             // 
             // label6
             // 
@@ -438,6 +460,7 @@
             this.default5_Tbx.Size = new System.Drawing.Size(40, 18);
             this.default5_Tbx.TabIndex = 34;
             this.default5_Tbx.Text = "60";
+            this.default5_Tbx.TextChanged += new System.EventHandler(this.default5_Tbx_TextChanged);
             // 
             // default4_Tbx
             // 
@@ -447,6 +470,7 @@
             this.default4_Tbx.Size = new System.Drawing.Size(40, 18);
             this.default4_Tbx.TabIndex = 33;
             this.default4_Tbx.Text = "45";
+            this.default4_Tbx.TextChanged += new System.EventHandler(this.default4_Tbx_TextChanged);
             // 
             // default5_Cbx
             // 
@@ -458,6 +482,7 @@
             this.default5_Cbx.Size = new System.Drawing.Size(15, 14);
             this.default5_Cbx.TabIndex = 32;
             this.default5_Cbx.UseVisualStyleBackColor = true;
+            this.default5_Cbx.CheckedChanged += new System.EventHandler(this.default5_Cbx_CheckedChanged);
             // 
             // default4_Cbx
             // 
@@ -469,6 +494,7 @@
             this.default4_Cbx.Size = new System.Drawing.Size(15, 14);
             this.default4_Cbx.TabIndex = 31;
             this.default4_Cbx.UseVisualStyleBackColor = true;
+            this.default4_Cbx.CheckedChanged += new System.EventHandler(this.default4_Cbx_CheckedChanged);
             // 
             // default3_Cbx
             // 
@@ -480,6 +506,7 @@
             this.default3_Cbx.Size = new System.Drawing.Size(15, 14);
             this.default3_Cbx.TabIndex = 30;
             this.default3_Cbx.UseVisualStyleBackColor = true;
+            this.default3_Cbx.CheckedChanged += new System.EventHandler(this.default3_Cbx_CheckedChanged);
             // 
             // Form1
             // 

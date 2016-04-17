@@ -21,7 +21,6 @@ namespace Csharp_K_winform
         bool[] linesToDraw = new bool[9];
         Color[] linecolors = new Color[9];
         int[] daysToDraw = new int[9];
-        double[] kdata = new double[400];
 
         public struct Data
         {
@@ -57,7 +56,6 @@ namespace Csharp_K_winform
             linecolors[7] = Color.BurlyWood;
             linecolors[8] = Color.Cyan;
         }
-
         public Form1()
         {
             InitializeComponent();
@@ -197,7 +195,6 @@ namespace Csharp_K_winform
             drawKLine();
             drawVolume();
             drawAvg();
-            Knum();
             chartdrawn = true;
         }
 
@@ -205,7 +202,6 @@ namespace Csharp_K_winform
         {
             findGlobal();
         }
-
         private void findGlobal()
         {
             for (int j = 0; j < 9; j++)
@@ -232,7 +228,6 @@ namespace Csharp_K_winform
                 pricePerPixar = (globalMax - globalMin) / (KlineGpb.Height - 40);
             }
         }
-
         private void drawKLine()
         {           
             kLine = KlineGpb.CreateGraphics();
@@ -332,6 +327,7 @@ namespace Csharp_K_winform
             }
             chartdrawn = true;
         }
+
         private void Avg(int n)
         {
             for (int i = 0; i < avgPrice.Length; i++)
@@ -355,7 +351,6 @@ namespace Csharp_K_winform
                 if (linesToDraw[j]) AvgLine(daysToDraw[j], linecolors[j]);
             }                   
         }
-
         private void drawVolume()
         {
             int indexStart = 0, indexEnd = 0;
@@ -609,49 +604,6 @@ namespace Csharp_K_winform
             if (linesToDraw[6]) daysToDraw[6] = Convert.ToInt32(default6_Tbx.Text);
             if (linesToDraw[7]) daysToDraw[7] = Convert.ToInt32(default7_Tbx.Text);
             if (linesToDraw[8]) daysToDraw[8] = Convert.ToInt32(default8_Tbx.Text);
-        }
-
-        private double RSV(int dayIndex, int n)
-        {
-            double high = 0, low = Double.MaxValue;
-            if (dayIndex >= n)
-            {
-                for (int i = n; i >= 0; i--)
-                {
-                    if (high < dataIn[dayIndex - i].max)
-                    {
-                        high = dataIn[dayIndex - i].max;
-                    }
-                    if (low > dataIn[dayIndex - i].min)
-                    {
-                        low = dataIn[dayIndex - i].min;
-                    }
-                }
-            }
-            else
-            {
-                for (int i = dayIndex; i >= 0; i--)
-                {
-                    if (high < dataIn[dayIndex - i].max)
-                    {
-                        high = dataIn[dayIndex - i].max;
-                    }
-                    if (low > dataIn[dayIndex - i].min)
-                    {
-                        low = dataIn[dayIndex - i].min;
-                    }
-                }
-            }
-            return (dataIn[dayIndex].end - low) / (high - low) * 100;
-        }
-
-        private void Knum()
-        {
-            kdata[0] = 100 / 3.0 + RSV(0, 9) / 3;
-            for (int i = 1; i < 304; i++)
-            {
-                kdata[i] = (kdata[i - 1] * 2 / 3) + (RSV(i, 9) / 3);
-            }
         }
     }
 }

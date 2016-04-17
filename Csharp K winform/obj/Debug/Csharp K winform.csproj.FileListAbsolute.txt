@@ -79,3 +79,6 @@ D:\GitHub\QuantSILC\Csharp K winform\obj\Debug\Csharp K winform.csprojResolveAss
 D:\GitHub\QuantSILC\Csharp K winform\obj\Debug\Csharp_K_winform.Form1.resources
 D:\GitHub\QuantSILC\Csharp K winform\obj\Debug\Csharp_K_winform.Properties.Resources.resources
 D:\GitHub\QuantSILC\Csharp K winform\obj\Debug\Csharp K winform.csproj.GenerateResource.Cache
+D:\Documents\GitHub\QuantSILC\Csharp K winform\bin\Debug\Csharp K winform.exe.config
+D:\Documents\GitHub\QuantSILC\Csharp K winform\obj\Debug\Csharp K winform.exe
+D:\Documents\GitHub\QuantSILC\Csharp K winform\obj\Debug\Csharp K winform.pdb

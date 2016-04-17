@@ -30,6 +30,8 @@ namespace Csharp_K_winform
             public double max;
             public double min;
             public long vol;
+
+            public string test;
         }
         public struct Line
         {

@@ -77,7 +77,6 @@ namespace Csharp_K_winform
                 drawKLine();
                 drawVolume();
                 drawAvg();
-                Knum();
             }            
         }
 
@@ -410,6 +409,56 @@ namespace Csharp_K_winform
             checkToDraw();
             checkDays();
             KlineGpb.MouseDown += KlineGpb_MouseDown;
+            KlineGpb.MouseWheel += new System.Windows.Forms.MouseEventHandler(KlineGpb_MouseWheel);
+            amountGpb.MouseWheel += new System.Windows.Forms.MouseEventHandler(AmountGpb_MouseWheel);
+        }
+
+        private void AmountGpb_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (!chartdrawn)
+                return;
+            if (e.Delta >= 0)
+            {
+                if ((indexStart > 303) || (indexEnd < 1) || ((indexEnd - indexStart) < 3))
+                    return;
+                indexStart++;
+                indexEnd--;
+            }
+            else if (e.Delta < 0)
+            {
+                if ((indexStart < 1) || (indexEnd > 303))
+                    return;
+                indexStart--;
+                indexEnd++;
+            }
+            findGlobal();
+            drawKLine();
+            drawVolume();
+            drawAvg();
+        }
+
+        private void KlineGpb_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (!chartdrawn)
+                return;
+            if (e.Delta >= 0)
+            {
+                if ((indexStart > 303) || (indexEnd < 1)||((indexEnd-indexStart)<3))
+                    return;
+                indexStart++;
+                indexEnd--;
+            }
+            else if (e.Delta < 0)
+            {
+                if ((indexStart < 1) || (indexEnd > 303))
+                    return;
+                indexStart--;
+                indexEnd++;               
+            }
+            findGlobal();
+            drawKLine();
+            drawVolume();
+            drawAvg();
         }
 
         void KlineGpb_MouseDown(object sender, MouseEventArgs e)

@@ -82,3 +82,4 @@ D:\GitHub\QuantSILC\Csharp K winform\obj\Debug\Csharp K winform.csproj.GenerateR
 D:\Documents\GitHub\QuantSILC\Csharp K winform\bin\Debug\Csharp K winform.exe.config
 D:\Documents\GitHub\QuantSILC\Csharp K winform\obj\Debug\Csharp K winform.exe
 D:\Documents\GitHub\QuantSILC\Csharp K winform\obj\Debug\Csharp K winform.pdb
+D:\GitHub\QuantSILC\Csharp K winform\obj\Debug\Csharp_K_winform.detailInfo.resources

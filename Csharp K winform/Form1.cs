@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Csharp_K_winform
@@ -12,7 +11,7 @@ namespace Csharp_K_winform
     {
         Graphics kLine;
         Graphics amountLine;
-        double globalMax = 0, globalMin = Double.MaxValue;
+        double globalMax = 0, globalMin = double.MaxValue;
         double pricePerPixar = 0;
         int rectangleWidth = 0;
         int roundDifference = 0;
@@ -22,6 +21,7 @@ namespace Csharp_K_winform
         Color[] linecolors = new Color[9];
         int[] daysToDraw = new int[9];
         double[] kdata = new double[400];
+        public static  int infoIndex = 0;
 
         public struct Data
         {
@@ -40,7 +40,7 @@ namespace Csharp_K_winform
         bool dataInput = false;
         bool fileselected = false;
         bool chartdrawn = false;
-        Data[] dataIn = new Data[400];
+        public static Data[] dataIn = new Data[400];
         double[] avgPrice = new double[400];
 
         private void setColor()
@@ -160,7 +160,7 @@ namespace Csharp_K_winform
             }
             catch (IOException err)
             {
-                Console.WriteLine(err.ToString());
+                MessageBox.Show(err.ToString());
             }
         }
 
@@ -210,7 +210,7 @@ namespace Csharp_K_winform
                 roundDifference = KlineGpb.Width - 40 - (rectangleWidth * (indexEnd - indexStart + 1));
 
                 globalMax = 0;
-                globalMin = Double.MaxValue;
+                globalMin = double.MaxValue;
                 for (int i = indexStart; i < indexEnd + 1; i++)
                 {
                     if (globalMax < avgPrice[i])
@@ -486,6 +486,28 @@ namespace Csharp_K_winform
             }
             kLine = KlineGpb.CreateGraphics();
             kLine.DrawLine(new Pen(new SolidBrush(Color.Black)), horizontal.start, horizontal.end);
+            Form detail = new detailInfo();
+            detail.Location = MousePosition;
+            if (e.X <= 20)
+            {
+                infoIndex = 0;
+            }
+            else if (e.X >= KlineGpb.Width - 20)
+            {
+                infoIndex = indexEnd - indexStart;
+            }
+            else
+            {
+                if ((20 + roundDifference * (rectangleWidth + 1)) > e.X)
+                {
+                    infoIndex = (e.X - 20) / (rectangleWidth + 1);
+                }
+                else
+                {
+                    infoIndex = (e.X - 20 - roundDifference * (rectangleWidth + 1)) / rectangleWidth + roundDifference;
+                }
+            }    
+            detail.Show();       
         }
 
         private void default0_Cbx_CheckedChanged(object sender, EventArgs e)

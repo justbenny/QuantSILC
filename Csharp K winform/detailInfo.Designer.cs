@@ -193,6 +193,8 @@
             this.Controls.Add(this.headlineLbl);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximumSize = new System.Drawing.Size(230, 230);
+            this.MinimumSize = new System.Drawing.Size(230, 230);
             this.Name = "detailInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Load += new System.EventHandler(this.detailInfo_Load);

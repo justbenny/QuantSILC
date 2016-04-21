@@ -304,15 +304,15 @@ namespace Csharp_K_winform
                     continue;
                 Line avgP = new Line();
                 
-                avgP.start.X = (int)Math.Ceiling((0.5 + i - indexStart) * rectangleWidth) + 20 + diff;
-                avgP.start.Y = KlineGpb.Height - (int)Math.Ceiling((avgPrice[i] - globalMin) / pricePerPixar) - 20;
+                avgP.start.X = (int)((0.5 + i - indexStart) * rectangleWidth) + 20 + diff;
+                avgP.start.Y = KlineGpb.Height - (int)((avgPrice[i] - globalMin) / pricePerPixar) - 20;
                  if (rdTemp > 0)
                 {
                     diff++;
                     rdTemp--;
                 }
-                avgP.end.X = (int)Math.Ceiling((1.5 + i - indexStart) * rectangleWidth) + 20 + diff;
-                avgP.end.Y = KlineGpb.Height - (int)Math.Ceiling((avgPrice[i + 1] - globalMin) / pricePerPixar) - 20;
+                avgP.end.X = (int)((1.5 + i - indexStart) * rectangleWidth) + 20 + diff;
+                avgP.end.Y = KlineGpb.Height - (int)((avgPrice[i + 1] - globalMin) / pricePerPixar) - 20;
                
                 if (dataIn[i].start >= dataIn[i].end)
                 {
@@ -409,8 +409,8 @@ namespace Csharp_K_winform
             checkToDraw();
             checkDays();
             KlineGpb.MouseDown += KlineGpb_MouseDown;
-            KlineGpb.MouseWheel += new System.Windows.Forms.MouseEventHandler(KlineGpb_MouseWheel);
-            amountGpb.MouseWheel += new System.Windows.Forms.MouseEventHandler(AmountGpb_MouseWheel);
+            KlineGpb.MouseWheel += new MouseEventHandler(KlineGpb_MouseWheel);
+            amountGpb.MouseWheel += new MouseEventHandler(AmountGpb_MouseWheel);
         }
 
         private void AmountGpb_MouseWheel(object sender, MouseEventArgs e)
@@ -469,44 +469,53 @@ namespace Csharp_K_winform
             drawKLine();
             drawAvg();            
             Line horizontal = new Line();
+            Line vertical = new Line();
+            vertical.start.Y = 20;
+            vertical.end.Y = KlineGpb.Height - 20;
+            horizontal.start.X = 20;
+            horizontal.end.X = KlineGpb.Width - 20;
             if (e.Y < 20)
             {
-                horizontal.start = new Point(20, 20);
-                horizontal.end = new Point(KlineGpb.Width - 20, 20);
+                horizontal.start.Y = 20;
             }
             else if (e.Y > (KlineGpb.Height - 20))
             {
-                horizontal.start = new Point(20, (KlineGpb.Height - 20));
-                horizontal.end = new Point(KlineGpb.Width - 20, (KlineGpb.Height - 20));
+                horizontal.start.Y = KlineGpb.Width - 20;
             }
             else
             {
-                horizontal.start = new Point(20, e.Y);
-                horizontal.end = new Point(KlineGpb.Width - 20, e.Y);
+                horizontal.start.Y = e.Y;
             }
+            horizontal.end.Y = horizontal.start.Y;
             kLine = KlineGpb.CreateGraphics();
             kLine.DrawLine(new Pen(new SolidBrush(Color.Black)), horizontal.start, horizontal.end);
             Form detail = new detailInfo();
-            detail.Location = MousePosition;
+            detail.Location = PointToScreen(KlineGpb.Location);
             if (e.X <= 20)
             {
                 infoIndex = 0;
+                vertical.start.X = 20 + (int)Math.Ceiling(0.5 * rectangleWidth);
             }
             else if (e.X >= KlineGpb.Width - 20)
             {
                 infoIndex = indexEnd - indexStart;
+                vertical.start.X = KlineGpb.Width - 20 - (int)Math.Ceiling(0.5 * rectangleWidth);
             }
             else
             {
                 if ((20 + roundDifference * (rectangleWidth + 1)) > e.X)
                 {
                     infoIndex = (e.X - 20) / (rectangleWidth + 1);
+                    vertical.start.X = 20 + infoIndex * (rectangleWidth + 1) + (int)Math.Ceiling(0.5 * rectangleWidth);
                 }
                 else
                 {
                     infoIndex = (e.X - 20 - roundDifference * (rectangleWidth + 1)) / rectangleWidth + roundDifference;
+                    vertical.start.X = 20 + roundDifference * (rectangleWidth + 1) + (infoIndex - roundDifference) * rectangleWidth + (int)Math.Ceiling(0.5 * rectangleWidth);
                 }
-            }    
+            }
+            vertical.end.X = vertical.start.X;
+            kLine.DrawLine(new Pen(new SolidBrush(Color.Black)), vertical.start, vertical.end);
             detail.Show();       
         }
 

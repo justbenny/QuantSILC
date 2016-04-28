@@ -11,6 +11,9 @@ namespace Csharp_K_winform
     {
         Graphics kLine;
         Graphics amountLine;
+        Graphics in_kline;
+        Graphics in_dline;
+        Graphics in_jline;
         double globalMax = 0, globalMin = double.MaxValue;
         double pricePerPixar = 0;
         int rectangleWidth = 0;
@@ -21,6 +24,8 @@ namespace Csharp_K_winform
         Color[] linecolors = new Color[9];
         int[] daysToDraw = new int[9];
         double[] kdata = new double[400];
+        double[] ddata = new double[400];
+        double[] jdata = new double[400];
         public static  int infoIndex = 0;
 
         public struct Data
@@ -77,6 +82,7 @@ namespace Csharp_K_winform
                 drawKLine();
                 drawVolume();
                 drawAvg();
+                drawKDJ();
             }            
         }
 
@@ -190,7 +196,7 @@ namespace Csharp_K_winform
             drawKLine();
             drawVolume();
             drawAvg();
-            Knum();
+            KDJnum();
             chartdrawn = true;
         }
 
@@ -405,13 +411,24 @@ namespace Csharp_K_winform
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            
             setColor();
             checkToDraw();
             checkDays();
             KlineGpb.MouseDown += KlineGpb_MouseDown;
             KlineGpb.MouseWheel += new MouseEventHandler(KlineGpb_MouseWheel);
             amountGpb.MouseWheel += new MouseEventHandler(AmountGpb_MouseWheel);
+            indexTbc.SelectedIndexChanged += indexTbc_SelectedIndexChanged;
         }
+
+        void indexTbc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (indexTbc.SelectedIndex == 1)
+            {
+                drawKDJ();
+            }
+        }
+
 
         private void AmountGpb_MouseWheel(object sender, MouseEventArgs e)
         {
@@ -698,13 +715,85 @@ namespace Csharp_K_winform
             return (dataIn[dayIndex].end - low) / (high - low) * 100;
         }
 
-        private void Knum()
+        private void KDJnum()
         {
             kdata[0] = 100 / 3.0 + RSV(0, 9) / 3;
+            ddata[0] = 50 + 1 / 3 * kdata[0];
             for (int i = 1; i < 304; i++)
             {
                 kdata[i] = (kdata[i - 1] * 2 / 3) + (RSV(i, 9) / 3);
+                if (kdata[i] > 100)
+                    kdata[i] = 100;
+                if (kdata[i] < 0)
+                    kdata[i] = 0;
             }
+            for (int i = 1; i < 304; i++)
+            {
+                ddata[i] = (2.0 / 3.0) * ddata[i - 1] + (1.0 / 3.0) * kdata[i];
+                if (ddata[i] > 100)
+                    ddata[i] = 100;
+                if (ddata[i] < 0)
+                    ddata[i] = 0;
+            }
+            for (int i = 0; i < 305; i++)
+            {
+                jdata[i] = 3.0 * kdata[i] - 2.0 * ddata[i];
+                if (jdata[i] > 100)
+                    jdata[i] = 100;
+                if (jdata[i] < 0)
+                    jdata[i] = 0;
+            }
+
         }
+      
+
+        private void drawKDJ()
+        {          
+
+            //下为画k指标的过程
+            in_kline = indexTbc.TabPages[1].CreateGraphics();
+            in_dline = indexTbc.TabPages[1].CreateGraphics();
+            in_jline = indexTbc.TabPages[1].CreateGraphics();
+            //以下部分求出开始端点与结束端点的索引值
+            int dot_interval = indexTbc.TabPages[1].Width / (indexEnd - indexStart + 1);
+            //SolidBrush backgroundBrush = new SolidBrush(KDj.BackColor);
+            //in_kline.FillRectangle(backgroundBrush, 10, 10, KDj.Width - 20, KDj.Height - 20);
+            indexTbc.TabPages[1].Refresh();
+            Pen kline = new Pen(Color.Blue, 1);
+            Pen dline = new Pen(Color.Red, 1);
+            Pen jline = new Pen(Color.Green, 1);
+            Point start = new Point();
+            Point end = new Point();
+            for (int i = indexStart; i < indexEnd ; i++)
+            {
+                //k指标的绘制
+                start.X = (int)(dot_interval * (i - indexStart) + 20);
+                end.X = (int)(dot_interval * (i - indexStart + 1) + 20);
+                start.Y = (int)((indexTbc.TabPages[1].Height - 40) * (1 - kdata[i] / 100)) + 20;
+                end.Y = (int)((indexTbc.TabPages[1].Height - 40) * (1 - kdata[i + 1] / 100)) + 20;
+                in_kline.DrawLine(kline, start, end);
+            }
+            for (int i = indexStart; i < indexEnd ; i++)
+            {
+                //j指标的绘制
+                start.X = (int)(dot_interval * (i - indexStart) + 20);
+                end.X = (int)(dot_interval * (i - indexStart + 1) + 20);
+                start.Y = (int)((indexTbc.TabPages[1].Height - 40) * (1 - ddata[i] / 100)) + 20;
+                end.Y = (int)((indexTbc.TabPages[1].Height - 40) * (1 - ddata[i + 1] / 100)) + 20;
+                in_dline.DrawLine(dline, start, end);
+            }
+            for (int i = indexStart; i < indexEnd ; i++)
+            {
+                //j指标的绘制
+                start.X = (int)(dot_interval * (i - indexStart) + 20);
+                end.X = (int)(dot_interval * (i - indexStart + 1) + 20);
+                start.Y = (int)((indexTbc.TabPages[1].Height - 40) * (1 - jdata[i] / 100)) + 20;
+                end.Y = (int)((indexTbc.TabPages[1].Height - 40) * (1 - jdata[i + 1] / 100)) + 20;
+                in_jline.DrawLine(jline, start, end);
+            }
+
+
+        }
+
     }
 }
